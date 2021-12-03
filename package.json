@@ -1,0 +1,42 @@
+{
+  "name": "three-headed-config",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.24.0",
+    "keycloak-js": "^15.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",    
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "^4.0.3",
+    "rxjs": "^6.6.3",
+    "semantic-ui-react": "^2.0.4"
+  },
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd mockserver && npm run start",
+    "start:dev": "concurrently \"cd mockserver && npm run start \" \"npm run client\"",
+    "client": "npm run start",    
+    "serve": "cd mockserver && npm run start",
+    "install": "cd mockserver && npm install",
+    "build": "npm run build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
