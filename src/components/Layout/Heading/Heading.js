@@ -1,9 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, Container, Header, Segment } from "semantic-ui-react";
 
 const Heading = props => {
-  let history = useHistory();
+  let history = useNavigate();
   const handleLogout = () => {
     props.userService.logout();
     history.push("/login");

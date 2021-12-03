@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Grid, Header, Image, Form, Segment } from "semantic-ui-react";
 
-class LoginPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      password: ""
-    };
+const LoginPage = (props) => {
 
-    // redirect to home if already logged in
-    if (this.props.userService.currentUserValue) {
-      this.props.history.push("/");
-    }
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  let history = useNavigate();
+  
+ 
+  // redirect to home if already logged in
+  if (props.userService.currentUserValue) {
+    history.push("/");
   }
+  
 
-  handleSubmit = async () => {
+  const handleSubmit = async () => {
     try {
-      await this.props.userService.login(this.state.email, this.state.password);
-      this.props.history.push("/");
+      await props.userService.login(email, password);
+      history.push("/");
     } catch (error) {
       console.error(error);
     }
   };
 
-  render() {
+  
     return (
       <Grid
         textAlign="center"
@@ -36,14 +36,14 @@ class LoginPage extends Component {
           <Header as="h2" color="black" textAlign="center">
             <Image src="/Logo-RedHat-D-Color-RGB.png" /> Log-in to your account
           </Header>
-          <Form size="large" onSubmit={this.handleSubmit}>
+          <Form size="large" onSubmit={handleSubmit}>
             <Segment stacked>
               <Form.Input
                 fluid
                 icon="user"
                 iconPosition="left"
                 placeholder="E-mail address"
-                onChange={event => this.setState({ email: event.target.value })}
+                onChange={event => setEmail({ email: event.target.value })}
               />
               <Form.Input
                 fluid
@@ -52,7 +52,7 @@ class LoginPage extends Component {
                 placeholder="Password"
                 type="password"
                 onChange={event =>
-                  this.setState({ password: event.target.value })
+                  setPassword({ password: event.target.value })
                 }
               />
 
@@ -64,7 +64,7 @@ class LoginPage extends Component {
         </Grid.Column>
       </Grid>
     );
-  }
+  
 }
 
-export default withRouter(LoginPage);
+export default LoginPage;
