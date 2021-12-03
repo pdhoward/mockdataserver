@@ -38,6 +38,6 @@ if (process.env.REACT_APP_STAGE === 'production') {
 config.init();
 
 export default {
-  TITLE: 'VU Catalog',
+  TITLE: 'Strategic Test Catalog',
   ...config
 };

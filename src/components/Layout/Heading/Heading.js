@@ -20,7 +20,7 @@ const Heading = props => {
           size="huge"
           floated="left"
           inverted
-          onClick={handleLogoClicked}
+          //onClick={handleLogoClicked}
           style={{ cursor: "pointer" }}
         >
           AI Testing Machine
@@ -30,7 +30,7 @@ const Heading = props => {
             inverted
             floated="right"
             attached="top"
-            onClick={handleLogout}
+            //onClick={handleLogout}
           >
             Logout
           </Button>

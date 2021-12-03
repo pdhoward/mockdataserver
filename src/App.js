@@ -9,29 +9,31 @@ import UpdateCatalogListing from "./containers/Catalog/CatalogListing/UpdateCata
 
 const App = (props) => {
 
-  const [currentUser, setCurrentUser] = useState(null)
-  //const userService = new UserService(props.auth);
+  const [currentUser, setCurrentUser] = useState(null)  
 
-  useEffect(() => {
-    //userService.currentUser.subscribe(x =>setCurrentUser(x));
-  }, [])
+  // useEffect(() => {
+    
+  // }, [])
  
  const showRedirect =
     !currentUser && !props.sso ? (
       <Navigate to="/login" />
     ) : null;
 
+    console.log(`------------------entered app------------`)
+    console.log(JSON.stringify(UserService))
+
     return (
       <Container fluid={true}>
         <Router>
-          {showRedirect}
+          {'showRedirect'}
           <Heading userService={UserService} />
-          {!currentUser && !props.sso && (
+          {!currentUser && !props.sso ? (
             <Routes>
               <Route path="/login" element = {<LoginPage userService={UserService} />}
               />
             </Routes>
-          )}
+          ) : null}
           {currentUser && (
             <Routes>
               <Route path="/add" element={<UpdateCatalogListing {...props} user={currentUser}/>}

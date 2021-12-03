@@ -4,6 +4,9 @@ import { Grid, Header, Image, Form, Segment } from "semantic-ui-react";
 
 const LoginPage = (props) => {
 
+  console.log(`----------------entered login-----------`)
+  console.log(props)
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -17,6 +20,7 @@ const LoginPage = (props) => {
   
 
   const handleSubmit = async () => {
+    console.log(`-----------------------this fired--------------`)
     try {
       await props.userService.login(email, password);
       navigate("/", { replace: true } );
@@ -51,9 +55,7 @@ const LoginPage = (props) => {
                 iconPosition="left"
                 placeholder="Password"
                 type="password"
-                onChange={event =>
-                  setPassword({ password: event.target.value })
-                }
+                onChange={event => setPassword({ password: event.target.value })}
               />
 
               <Form.Button color="black" fluid size="large" type="submit">

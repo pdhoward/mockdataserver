@@ -3,21 +3,21 @@ export function fakeAuth(url, options) {
     {
       id: 0,
       email: 'lreed@vu.com',
-      name: 'Lou Reed',
+      name: 'Lou',
       password: '123',
       role: 'admin'
     },
     {
       id: 1,
       email: 'jcale@vu.com',
-      name: 'John Cale',
+      name: 'John',
       password: '123',
       role: 'user'
     },
     {
       id: 2,
       email: 'smorrison@vu.com',
-      name: 'Sterling Morrison',
+      name: 'Sterling',
       password: '123',
       role: 'user'
     }
