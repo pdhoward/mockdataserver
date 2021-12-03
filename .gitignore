@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/mockserver/node_modules
+
 # testing
 /coverage
 
