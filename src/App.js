@@ -9,7 +9,7 @@ import UpdateCatalogListing from "./containers/Catalog/CatalogListing/UpdateCata
 
 const App = (props) => {
 
-  const [currentUser, setCurrentUser] = useState('Pat')
+  const [currentUser, setCurrentUser] = useState(null)
   //const userService = new UserService(props.auth);
 
   useEffect(() => {
@@ -28,38 +28,17 @@ const App = (props) => {
           <Heading userService={UserService} />
           {!currentUser && !props.sso && (
             <Routes>
-              <Route
-                path="/login"
-                render={props => <LoginPage userService={UserService} />}
+              <Route path="/login" element = {<LoginPage userService={UserService} />}
               />
             </Routes>
           )}
           {currentUser && (
             <Routes>
-              <Route
-                path="/add"
-                render={props => (
-                  <UpdateCatalogListing
-                    {...props}
-                    user={currentUser}
-                  />
-                )}
+              <Route path="/add" element={<UpdateCatalogListing {...props} user={currentUser}/>}
               />
-              <Route
-                path="/edit"
-                render={props => (
-                  <UpdateCatalogListing
-                    {...props}
-                    user={currentUser}
-                  />
-                )}
+              <Route path="/edit" element={<UpdateCatalogListing {...props} user={currentUser}/>}
               />
-              <Route
-                path="/"
-                exact
-                render={props => (
-                  <MainContent {...props} user={currentUser} />
-                )}
+              <Route path="/" element={<MainContent {...props} user={currentUser} />}
               />
             </Routes>
           )}

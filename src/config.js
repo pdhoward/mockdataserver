@@ -6,7 +6,7 @@ const dev = {
   init: () => {},
   auth: fakeAuth,
   useSSO: false,
-  apiUrl: 'http://www.example.com'
+  apiUrl: 'http://localhost:3007'
 };
 
 const local = {
