@@ -9,11 +9,11 @@ import UpdateCatalogListing from "./containers/Catalog/CatalogListing/UpdateCata
 
 const App = (props) => {
 
-  const [currentUser, setCurrentUser] = useState(null)
-  const userService = new UserService(props.auth);
+  const [currentUser, setCurrentUser] = useState('Pat')
+  //const userService = new UserService(props.auth);
 
   useEffect(() => {
-    userService.currentUser.subscribe(x =>setCurrentUser(x));
+    //userService.currentUser.subscribe(x =>setCurrentUser(x));
   }, [])
  
  const showRedirect =
@@ -25,12 +25,12 @@ const App = (props) => {
       <Container fluid={true}>
         <Router>
           {showRedirect}
-          <Heading userService={userService} />
+          <Heading userService={UserService} />
           {!currentUser && !props.sso && (
             <Routes>
               <Route
                 path="/login"
-                render={props => <LoginPage userService={userService} />}
+                render={props => <LoginPage userService={UserService} />}
               />
             </Routes>
           )}
