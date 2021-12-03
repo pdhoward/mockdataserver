@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Heading from "./components/Layout/Heading/Heading";
 import MainContent from "./components/Layout/MainContent/MainContent";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import LoginPage from "./containers/Login/LoginPage";
 import UserService from "./services/UserService";
 import { Container } from "semantic-ui-react";
@@ -23,14 +23,16 @@ const App = (props) => {
 
     return (
       <Container fluid={true}>
-        <BrowserRouter>
+        <Router>
           {showRedirect}
           <Heading userService={userService} />
           {!currentUser && !props.sso && (
-            <Route
-              path="/login"
-              render={props => <LoginPage userService={userService} />}
-            />
+            <Routes>
+              <Route
+                path="/login"
+                render={props => <LoginPage userService={userService} />}
+              />
+            </Routes>
           )}
           {currentUser && (
             <Routes>
@@ -61,7 +63,7 @@ const App = (props) => {
               />
             </Routes>
           )}
-        </BrowserRouter>
+        </Router>
       </Container>
     );
   

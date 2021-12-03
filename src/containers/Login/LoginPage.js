@@ -7,19 +7,19 @@ const LoginPage = (props) => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
-  let history = useNavigate();
+  let navigate = useNavigate();
   
  
   // redirect to home if already logged in
   if (props.userService.currentUserValue) {
-    history.push("/");
+    navigate("/", { replace: true } );
   }
   
 
   const handleSubmit = async () => {
     try {
       await props.userService.login(email, password);
-      history.push("/");
+      navigate("/", { replace: true } );
     } catch (error) {
       console.error(error);
     }

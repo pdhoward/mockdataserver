@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Button, Container, Header, Segment } from "semantic-ui-react";
 
 const Heading = props => {
-  let history = useNavigate();
+  let navigate = useNavigate();
   const handleLogout = () => {
     props.userService.logout();
-    history.push("/login");
+    navigate("/login", { replace: true } );
   };
 
   const handleLogoClicked = () => {
-    history.push("/");
+    navigate("/", { replace: true } );
   };
 
   return (
@@ -23,7 +23,7 @@ const Heading = props => {
           onClick={handleLogoClicked}
           style={{ cursor: "pointer" }}
         >
-          3-Headed Config
+          AI Testing Machine
         </Header>
         {props.userService.currentUserValue && (
           <Button
